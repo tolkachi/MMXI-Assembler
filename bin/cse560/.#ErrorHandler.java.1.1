@@ -1,0 +1,16 @@
+package cse560;
+
+public class ErrorHandler {
+    public static void fatalError(String msg) {
+        System.err.printf("[ERROR] %s\n", msg);
+        System.exit(1);
+    }
+
+    public static void fatalError(String msg, int lineNumber) {
+        ErrorHandler.fatalError(String.format("%s (Line: %d)", msg, lineNumber));
+    }
+    
+    public static void warning(String msg) {
+    	System.err.println(msg);
+    }
+}

@@ -1,0 +1,48 @@
+segmentName   = 'Lab2EG'
+isRelocatable = false
+firstAddress  = 0x30b0
+length        = 0x0018
+execAddress   = 0x30b1
+
+# EXTERNAL SYMBOLS #
+
+
+# ENTRY POINTS #
+
+
+# SYMBOL TABLE #
+
+ACC    0x0001 false
+Next   0x30bc false
+count  0x30b0 false
+loop   0x30b3 false
+Array  0x30c3 false
+msg    0x30b7 false
+Begin  0x30b1 false
+
+# LITERAL TABLE #
+
+  64 30c7
+
+# PROGRAM #
+
+   1 (0xffffffff): Lab2EG .ORIG x30B0
+   2 (0x000030b0): count  .FILL #4
+   3 (0x000030b1): Begin  LD    ACC, count
+   4 (0x000030b2): null   LEA   R0, msg
+   5 (0x000030b3): loop   TRAP  x22
+   6 (0x000030b4): null   ADD   ACC, ACC, #-1
+   7 (0x000030b5): null   BRP   loop
+   8 (0x000030b6): null   JMP   Next
+   9 (0x000030b7): msg    .STRZ "hi! "
+  10 (0x000030bc): Next   AND   R0, R0, x0
+  11 (0x000030bd): null   NOT   R0, R0
+  12 (0x000030be): null   ST    R0, Array
+  13 (0x000030bf): null   LEA   R5, Array
+  14 (0x000030c0): null   LD    R6, =#100
+  15 (0x000030c1): null   STR   R0, R5, #1
+  16 (0x000030c2): null   TRAP  x25
+  17 (0xffffffff): ACC    .EQU  #1
+  19 (0x000030c3): Array  .BLKW #3
+  20 (0x000030c6): null   .FILL x10
+  21 (0xffffffff): null   .END  Begin
